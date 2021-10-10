@@ -6,6 +6,20 @@ import 'package:async_redux/async_redux.dart';
 import 'store.dart';
 import 'actions.dart';
 
+class MainTemplate extends StatelessWidget {
+  final Widget title;
+  Widget? body;
+  MainTemplate({Key? key, required this.title, this.body}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title:  this.title),
+      body: this.body,
+    );
+  }
+}
+
 class ActivityListView extends StatelessWidget {
   final BuiltList<Activity> activities;
   final VoidCallback? onAddActivity;
@@ -22,13 +36,18 @@ class ActivityListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Fool With a Plan')),
-      body: Center(child: ActivityList(activities: activities)),
-      floatingActionButton: FloatingActionButton(
-        onPressed: onAddActivity,
-        child: const Icon(Icons.add),
-      ),
+    return MainTemplate(
+      title: const Text('Activity Overview'),
+      body: Column(mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+        Expanded(child: ActivityList(activities: activities)),
+        Center(
+          child: TextButton(
+            onPressed: onAddActivity,
+            child: const Text("Add Activity"),
+          ),
+        )
+      ]),
     );
   }
 }
