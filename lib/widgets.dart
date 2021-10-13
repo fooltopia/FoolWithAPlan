@@ -70,9 +70,16 @@ class ActivityOverview extends StatelessWidget {
   ActivityOverview({Key? key, required this.activity}) : super(key: key);
   Widget build(BuildContext context) {
     return Container(
-        child: Column(children: [
-      Text('Activity: ${activity.name}'),
-      Text('Description: ${activity.description}')
+      padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+      margin: EdgeInsets.all(5.0),
+      color: Colors.lightBlue,
+      child: Column(
+        verticalDirection: VerticalDirection.down,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Activity: ${activity.name}'),
+          Text('Description: ${activity.description}')
     ]));
   }
 }

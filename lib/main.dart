@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
+        theme: ThemeData(primarySwatch: Colors.purple),
         routes: routes,
         navigatorKey: navigatorKey,
       ));
